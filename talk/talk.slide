@@ -1,0 +1,39 @@
+Building an app from scratch
+Go, AngularJS, App Engine, and the meetup API
+
+Francesc Campoy
+@francesc
+campoy@golang.org
+
+* Agenda
+
+- Two slides
+
+- A bunch of code
+
+- Moar beer
+
+* What we're building
+
+.image img/screenshot.png _ 800
+.caption [[http://go-meetups.appspot.com/][go-meetups.appspot.com]]
+
+* What we need
+
+The code:
+
+- [[http://github.com/campoy/golang-groups][github.com/campoy/golang-groups]]
+
+The Go SDK:
+
+- [[https://cloud.google.com/sdk/][cloud.google.com/sdk]]
+
+An editor:
+
+- I use Sublime Text 3 with GoSublime
+
+* Architecture
+
+.image img/folders.png 500 _
+
+* Let's code!
