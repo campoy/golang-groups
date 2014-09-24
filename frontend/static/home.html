@@ -1,0 +1,45 @@
+<!--
+ Copyright 2011 The Go Authors.  All rights reserved.
+ Use of this source code is governed by a BSD-style
+ license that can be found in the LICENSE file.
+-->
+
+<!doctype html>
+<html ng-app>
+
+<head>
+    <title>Go Meetups</title>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+    <script src='/home.js'></script>
+    <link rel='stylesheet' href='/home.css'>
+</head>
+
+<body ng-controller='GroupsCtrl'>
+    <div class='container'>
+        <h1 class='rounded-box'>Go Meetups</h1>
+
+        <h2>Groups</h2>
+
+        <table class='grey rounded-box'>
+            <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Members</th>
+            </tr>
+            <tr ng-repeat='g in groups | orderBy:"Members":true'>
+                <td><a href="{{g.URL}}">{{g.Name}}</a></td>
+                <td>{{g.City}}, {{g.Country}}</td>
+                <td>{{g.Members}}</td>
+            </tr>
+        </table>
+
+    </div>
+
+    <div class='errors'>
+        <p ng-repeat='e in errors' class='rounded-box' ng-click='errors.splice($index, 1)'>{{e}}</p>
+    </div>
+</body>
+
+</html>
