@@ -33,7 +33,7 @@ function GroupsCtrl($scope, $http) {
     $http.get('/api/groups').then(function(res) {
         $scope.groups = res.data.Groups;
         for (var i in res.data.Errors) {
-            $scope.errors.push(res.data.Errors[i]);
+            $scope.log(res.data.Errors[i]);
         }
     }, function(msg) {
         $scope.log(msg.data);

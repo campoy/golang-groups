@@ -1,9 +1,10 @@
-/*
- Copyright 2011 The Go Authors.  All rights reserved.
- Use of this source code is governed by a BSD-style
- license that can be found in the LICENSE file.
-*/
+//  Copyright 2011 The Go Authors.  All rights reserved.
+//  Use of this source code is governed by a BSD-style
+//  license that can be found in the LICENSE file.
 
+//  The backend in step 1 prints the same string as in step 0, but this time we
+//  use the encoding/json package to generate the json response given a list of
+//  Go structs.
 package backend
 
 import (

@@ -1,9 +1,13 @@
-/*
- Copyright 2011 The Go Authors.  All rights reserved.
- Use of this source code is governed by a BSD-style
- license that can be found in the LICENSE file.
-*/
+//  Copyright 2011 The Go Authors.  All rights reserved.
+//  Use of this source code is governed by a BSD-style
+//  license that can be found in the LICENSE file.
 
+//  The backend in step 2 keeps only the id of the meetup groups we want to
+//  display and fetches the rest of the information from meetup using their
+//  API.
+//
+//  The documentation of that API is available on:
+//    http://www.meetup.com/meetup_api
 package backend
 
 import (
@@ -61,7 +65,7 @@ func getGroups(w http.ResponseWriter, r *http.Request) {
 // docs for the API: http://www.meetup.com/meetup_api/docs/
 func fetch(c appengine.Context, id string) (*Group, error) {
 	const (
-		apiKey      = "13755230371f55176d32a31147e2614"
+		apiKey      = "obtain your apikey from https://secure.meetup.com/meetup_api/key/"
 		urlTemplate = "https://api.meetup.com/%s?sign=true&key=%s"
 	)
 

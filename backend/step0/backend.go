@@ -1,9 +1,9 @@
-/*
- Copyright 2011 The Go Authors.  All rights reserved.
- Use of this source code is governed by a BSD-style
- license that can be found in the LICENSE file.
-*/
+//  Copyright 2011 The Go Authors.  All rights reserved.
+//  Use of this source code is governed by a BSD-style
+//  license that can be found in the LICENSE file.
 
+//  The backend in step 0 prints the same constant string as the response to
+//  every HTTP request.
 package backend
 
 import (

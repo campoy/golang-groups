@@ -1,9 +1,10 @@
-/*
- Copyright 2011 The Go Authors.  All rights reserved.
- Use of this source code is governed by a BSD-style
- license that can be found in the LICENSE file.
-*/
+//  Copyright 2011 The Go Authors.  All rights reserved.
+//  Use of this source code is governed by a BSD-style
+//  license that can be found in the LICENSE file.
 
+//  The backend in step 4 uses memcache to store the information retrieved from
+//  the meetup API and limit the number of calls.
+//  Memcache overview: https://cloud.google.com/appengine/docs/go/memcache
 package backend
 
 import (
@@ -88,7 +89,7 @@ func load(c appengine.Context, id string) (*Group, error) {
 	item := &memcache.Item{
 		Key:        id,
 		Object:     group,
-		Expiration: time.Hour,
+		Expiration: 24 * time.Hour,
 	}
 	err = memcache.JSON.Set(c, item)
 	if err != nil {
@@ -101,7 +102,7 @@ func load(c appengine.Context, id string) (*Group, error) {
 // docs for the API: http://www.meetup.com/meetup_api/docs/
 func fetch(c appengine.Context, id string) (*Group, error) {
 	const (
-		apiKey      = "13755230371f55176d32a31147e2614"
+		apiKey      = "obtain your apikey from https://secure.meetup.com/meetup_api/key/"
 		urlTemplate = "https://api.meetup.com/%s?sign=true&key=%s"
 	)
 
