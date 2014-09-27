@@ -40,6 +40,7 @@ var ids = []string{
 	"bostongolang",
 	"Tokyo-Golang-Developers",
 	"Go-User-Group-Hamburg",
+	"Go-AKL",
 }
 
 func getGroups(w http.ResponseWriter, r *http.Request) {
