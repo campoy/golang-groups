@@ -63,8 +63,9 @@ a {
     background: #faa;
     cursor: pointer;
 }
-footer, footer a {
+footer {
     text-align: center;
     font-style: italic;
     color: #666;
+    padding: 40px;
 }
