@@ -5,84 +5,66 @@
 */
 
 body {
-	-webkit-font-smoothing:antialiased;
-	width: 80%;
-	max-width: 800px;
-	margin: 0 auto;
-	background: #f8f8f8;
+    -webkit-font-smoothing: antialiased;
+    width: 80%;
+    margin: 0 auto;
+    background: #f8f8f8;
 }
-
-body, input, button {
-	font-family: 'Roboto', sans-serif;
-	font-size: 16px;
-	color: #444;
+body, input {
+    font-family: sans-serif;
+    font-size: 16px;
+    color: #444;
 }
-*:disabled {
-	color: #888;
+input:focus {
+    outline: none;
 }
-
 h1 {
-	text-align: center;
-	font-size: 3em;
-	font-weight: 200;
-	height: 70px;
+    font-weight: 200;
+    text-align: center;
+    font-size: 3em;
+    color: #333;
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 15px;
 }
-
-h2 {
-	font-size: 2em;
-	font-weight: 200;
+.row {
+    overflow: auto;
+    padding: 5px;
 }
-
-li {
-	list-style: none;
-	padding: 5px;
+.row:first-child {
+    background: #eee;
+    font-weight: bolder;
 }
-li.done {
-	color: #888;
-	text-decoration: line-through;
+.row > * {
+    display: inline-block;
+    float: left;
+    width: 20%;
+    text-align: center;
+    border: 0;
+    padding: 0;
+    margin: 0;
 }
-
-li > .checkbox {
-	display: inline-block;
-	width: 10px;
-	height: 10px;
-	background: white;
-	margin-right: 8px;
-	border-radius: 2px;
-	border: 1px #ddd solid;
+input {
+    text-align: center;
+    border: none;
+    background: #fff;
+    width: 100%;
+    color: #aaa;
 }
-li.done > .checkbox {
-	background: #888;	
-}
-
-.rounded-box {
-	padding: 10px;
-	border-radius: 4px;
-	border: 1px #ddd solid;
-}
-
-table, tr {
-	width: 100%;
-}
-td {
-	width: 30%;
-}
-
-.grey {
-	background: #eee;
-}
-
-h1 {
-	color: #ffa;
-	background: #448;
-}
-
-.errors p {
-	background: #ffaaaa;
-	cursor: pointer;
-}
-
 a {
-	text-decoration: none;
-	color: #444;
+    text-decoration: none;
+    color: #335;
+}
+.rounded-box, .errors p {
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px #ddd solid;
+}
+.errors p {
+    background: #faa;
+    cursor: pointer;
+}
+footer, footer a {
+    text-align: center;
+    font-style: italic;
+    color: #666;
 }

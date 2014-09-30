@@ -11,35 +11,44 @@
     <title>Go Meetups</title>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
     <script src='/home.js'></script>
     <link rel='stylesheet' href='/home.css'>
 </head>
 
 <body ng-controller='GroupsCtrl'>
     <div class='container'>
-        <h1 class='rounded-box'>Go Meetups</h1>
+        <h1>Go Meetups</h1>
 
-        <h2>Groups</h2>
-
-        <table class='grey rounded-box'>
-            <tr>
-                <th>Name</th>
-                <th>Location</th>
-                <th>Members</th>
-            </tr>
-            <tr ng-repeat='g in groups | orderBy:"Members":true'>
-                <td><a href="{{g.URL}}">{{g.Name}}</a></td>
-                <td>{{g.City}}, {{g.Country}}</td>
-                <td>{{g.Members}}</td>
-            </tr>
-        </table>
+        <div>
+            <div class='row'>
+                <span ng-repeat='f in filteredFields'>{{f}}</span>
+                <span>Members</span>
+            </div>
+            <div class='row'>
+                <span ng-repeat='f in filteredFields'>
+                    <input placeholder='filter' ng-model='search[f]' ng-change='refilter()'>
+                </span>
+                <span>{{totalSum()}}</span>
+            </div>
+            <div class='row' ng-repeat='g in groups | filter:search | orderBy:"Members":true'>
+                <a href="{{g.URL}}">{{g.Name}}</a>
+                <span>{{g.City}}</span>
+                <span>{{g.Country}}</span>
+                <div>{{g.Continent || 'N/A'}}</div>
+                <span>{{g.Members}}</span>
+            </div>
+        </div>
+    </div>
 
     </div>
 
     <div class='errors'>
-        <p ng-repeat='e in errors' class='rounded-box' ng-click='errors.splice($index, 1)'>{{e}}</p>
+        <p ng-repeat='e in errors' ng-click='errors.splice($index, 1)'>{{e}}</p>
     </div>
+
+    <footer>
+        by <a href="http://twitter.com/francesc">@francesc</a>, source code on <a href="http://github.com/campoy/golang-groups">GitHub</a>
+    </footer>
 </body>
 
 </html>
