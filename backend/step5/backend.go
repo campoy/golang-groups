@@ -22,14 +22,6 @@ func init() {
 	http.HandleFunc("/api/groups", getGroups)
 }
 
-type Group struct {
-	Name    string
-	URL     string
-	Members int
-	City    string
-	Country string
-}
-
 var ids = []string{
 	"golangsf",
 	"golangsv",
@@ -40,6 +32,14 @@ var ids = []string{
 	"bostongolang",
 	"Tokyo-Golang-Developers",
 	"Go-User-Group-Hamburg",
+}
+
+type Group struct {
+	Name    string
+	URL     string
+	Members int
+	City    string
+	Country string
 }
 
 func getGroups(w http.ResponseWriter, r *http.Request) {
