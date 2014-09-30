@@ -29,7 +29,7 @@ type Group struct {
 // What it the information changes?
 var groups = []Group{
 	{"GoSV", "http://www.meetup.com/golangsv", 194, "San Mateo", "US"},
-	{"GoSF", "http: //www.meetup.com/golangsf", 1393, "San Francisco", "US"},
+	{"GoSF", "http://www.meetup.com/golangsf", 1393, "San Francisco", "US"},
 }
 
 func getGroups(w http.ResponseWriter, r *http.Request) {

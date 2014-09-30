@@ -26,7 +26,7 @@ const response = `
             "Country": "US"
         }, {
             "Name": "GoSF",
-            "URL": "http: //www.meetup.com/golangsf",
+            "URL": "http://www.meetup.com/golangsf",
             "Members": 1393,
             "City": "San Francisco",
             "Country": "US"
