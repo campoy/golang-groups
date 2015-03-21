@@ -12,7 +12,7 @@
 # limitations under the License.
 
 application: go-meetups
-module: default
+module: frontend
 version: 1
 api_version: 1
 runtime: python27

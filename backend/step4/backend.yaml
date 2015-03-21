@@ -12,7 +12,7 @@
 # limitations under the License.
 
 application: go-meetups
-module: backend
+module: default
 version: step4
 runtime: go
 api_version: go1
