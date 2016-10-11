@@ -13,7 +13,7 @@
 
 application: go-meetups
 module: default
-version: step6
+version: step7
 runtime: go
 api_version: go1
 
