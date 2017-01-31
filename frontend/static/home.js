@@ -78,7 +78,9 @@ function paintMap(groups) {
             content: groupContent(g)
         });
         var marker = new google.maps.Marker({
-            position: {lat: g.Lat, lng: g.Lon},
+            position: {
+                lat: g.Lat + Math.random()/50.0,
+                lng: g.Lon + Math.random()/50.0},
             title: g.Name,
             map: map
         });
