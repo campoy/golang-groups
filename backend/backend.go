@@ -45,13 +45,13 @@ func getGroups(w http.ResponseWriter, r *http.Request) {
 	c := appengine.NewContext(r)
 
 	var res struct {
-		Groups []Group  `json:",omitempty"`
-		Errors []string `json:",omitempty"`
+		Groups []Group `json:",omitempty"`
+		Error  string  `json:",omitempty"`
 	}
 
 	gs, err := fetchAll(c, "golang", "go-programming-language")
 	if err != nil {
-		res.Errors = append(res.Errors, err.Error())
+		res.Error = err.Error()
 	} else {
 		res.Groups = gs
 	}

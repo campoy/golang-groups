@@ -23,9 +23,7 @@
             "Lat": 10.0,
             "Lon": 15.0
         }],
-        "Errors": [
-            "something bad happened"
-        ]
+        "Error": "something bad happened"
     }
 */
 function GroupsCtrl($scope, $http, $filter) {
@@ -54,8 +52,8 @@ function GroupsCtrl($scope, $http, $filter) {
 
     $http.get('/api/groups').then(function(res) {
         $scope.groups = res.data.Groups;
-        for (var i in res.data.Errors) {
-            $scope.log(res.data.Errors[i]);
+        if (res.data.Error && res.data.Error.length > 0) {
+            $scope.log(res.data.Error);
         }
         $scope.refilter();
     }, function(msg) {
