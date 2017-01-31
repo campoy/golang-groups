@@ -71,16 +71,31 @@ function paintMap(groups) {
         center: {lat: 0, lng: 0}
     });
     groups = groups || [];
-    markers = [];
-    for (var i=0; i < groups.length; i++) {
-        var g = groups[i];
-        if (g.Lat != 0 && g.Lon != 0) {
-            markers.push(new google.maps.Marker({
-                position: {lat: g.Lat, lng: g.Lon},
-                title: g.Name,
-                map: map
-            }));
-        }
-    }
-    new MarkerClusterer(map, markers, {imagePath: '/m'});
+    var markers = groups.map(function(g) {
+        if (g.Lat == 0 || g.Lon == 0) return;
+
+        var infoWindow = new google.maps.InfoWindow({
+            content: groupContent(g)
+        });
+        var marker = new google.maps.Marker({
+            position: {lat: g.Lat, lng: g.Lon},
+            title: g.Name,
+            map: map
+        });
+        marker.addListener('click', function() {
+            infoWindow.open(map, marker);
+        })
+        return marker;
+    })
+
+    new MarkerClusterer(map, markers, {
+        imagePath: '/m',
+        maxZoom: 10,
+    });
+}
+
+function groupContent(g) {
+    return '<h3>'+g.Name+'</h3>'
+        + '<p>' + g.Members + ' gophers</p>'
+        + '<a href="' + g.Link + '">go to page</a>';
 }
