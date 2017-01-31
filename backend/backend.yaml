@@ -22,4 +22,4 @@ handlers:
   script: _go_app
 
 env_variables:
-  API_KEY: '356151506b87e2e3f2358205c3552'
+  API_KEY: '' # go get yours at https://secure.meetup.com/meetup_api/key/
