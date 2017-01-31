@@ -22,5 +22,7 @@ handlers:
 - url: /
   static_files: static/home.html
   upload: static/home.html
+  secure: always
 - url: /
   static_dir: static
+  secure: always
