@@ -9,7 +9,6 @@ package backend
 import (
 	"encoding/json"
 	"fmt"
-	"log"
 	"net/http"
 	"os"
 	"strings"
@@ -66,12 +65,6 @@ func getGroups(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "%s", b)
 }
 
-type meetupErr struct{ Code, Message, Field string }
-
-func (err meetupErr) Error() string {
-	return fmt.Sprintf("%s on %s: %s", err.Code, err.Field, err.Message)
-}
-
 func fetchAll(c appengine.Context, topics ...string) ([]Group, error) {
 	var groups []Group
 	if _, err := memcache.JSON.Get(c, "groups", &groups); err == nil {
@@ -86,7 +79,6 @@ func fetchAll(c appengine.Context, topics ...string) ([]Group, error) {
 	for _, topic := range topics {
 		next := fmt.Sprintf(feedTmpl, apiKey, topic, strings.Join(fields, ","))
 		for next != "" {
-			log.Printf("fetching %v\n", next)
 			res, err := client.Get(next)
 			if err != nil {
 				return nil, fmt.Errorf("could not get groups by topic ID: %v", err)
