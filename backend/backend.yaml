@@ -12,11 +12,14 @@
 # limitations under the License.
 
 application: go-meetups
-module: default
-version: step1
+module: backend
+version: step7
 runtime: go
 api_version: go1
 
 handlers:
 - url: /.*
   script: _go_app
+
+env_variables:
+  API_KEY: '356151506b87e2e3f2358205c3552'

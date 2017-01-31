@@ -11,6 +11,8 @@
     <title>Go Meetups</title>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <script>function paintMap() {}</script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgQD9-oZlWaZ4imw9q9_Qd_Kx0PRP1rnM&callback=paintMap"></script>
     <script src='/home.js'></script>
     <link rel='stylesheet' href='/home.css'>
 </head>
@@ -21,9 +23,10 @@
 
         <p>This is a list of all the groups in <a href="http://www.meetup.com">meetup.com</a> that
         mention <a href="http://golang.org">#golang</a> as one of its topics.
-        The list is ordered by number of members and you can apply filters to any column. The
-        continent for each country is obtained using <a href="http://freebase.com">Freebase</a>.
+        The list is ordered by number of members and you can apply filters to any column.
         </p>
+
+        <div id="map"></div>
 
         <div>
             <div class='row'>
@@ -37,10 +40,9 @@
                 <span>{{totalSum()}}</span>
             </div>
             <div class='row' ng-repeat='g in groups | filter:search | orderBy:"Members":true'>
-                <a href="{{g.URL}}">{{g.Name}}</a>
+                <a href="{{g.Link}}">{{g.Name}}</a>
                 <span>{{g.City}}</span>
                 <span>{{g.Country}}</span>
-                <div>{{g.Continent || 'N/A'}}</div>
                 <span>{{g.Members}}</span>
             </div>
         </div>

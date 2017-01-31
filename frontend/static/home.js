@@ -8,16 +8,20 @@
     {
         "Groups": [{
             "Name": "GoSV",
-            "URL": "http://www.meetup.com/golangsv",
+            "Link": "http://www.meetup.com/golangsv",
             "Members": 194,
             "City": "San Mateo",
-            "Country": "US"
+            "Country": "US",
+            "Lat": 12.0,
+            "Lon": 10.0
         }, {
             "Name": "GoSF",
-            "URL": "http: //www.meetup.com/golangsf",
+            "Link": "http: //www.meetup.com/golangsf",
             "Members": 1393,
             "City": "San Francisco",
-            "Country": "US"
+            "Country": "US",
+            "Lat": 10.0,
+            "Lon": 15.0
         }],
         "Errors": [
             "something bad happened"
@@ -30,7 +34,7 @@ function GroupsCtrl($scope, $http, $filter) {
     $scope.groups = [];
     $scope.errors = [];
     $scope.search = {};
-    $scope.filteredFields = ['Name', 'City', 'Country', 'Continent'];
+    $scope.filteredFields = ['Name', 'City', 'Country'];
     $scope.filteredGroups = [];
 
     $scope.refilter = function() {
@@ -39,6 +43,7 @@ function GroupsCtrl($scope, $http, $filter) {
             if ($scope.search[field] === '') delete $scope.search[field];
         }
         $scope.filteredGroups = $filter('filter')($scope.groups, $scope.search);
+        paintMap($scope.filteredGroups);
     };
 
     $scope.totalSum = function() {
@@ -60,4 +65,22 @@ function GroupsCtrl($scope, $http, $filter) {
     $scope.log = function(msg) {
         $scope.errors.push(msg);
     };
+}
+
+function paintMap(groups) {
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 1,
+        center: {lat: 0, lng: 0}
+    });
+    groups = groups || [];
+    for (var i=0; i < groups.length; i++) {
+        var g = groups[i];
+        if (g.Lat != 0 && g.Lon != 0) {
+            new google.maps.Marker({
+                position: {lat: g.Lat, lng: g.Lon},
+                title: g.Name,
+                map: map
+            });
+        }
+    }
 }

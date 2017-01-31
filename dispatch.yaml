@@ -15,7 +15,7 @@ application: go-meetups
 
 dispatch:
   - url: "*/api/*"
-    module: default
+    module: backend
 
   - url: "*/*"
-    module: frontend
+    module: default
