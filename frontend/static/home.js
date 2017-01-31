@@ -71,14 +71,16 @@ function paintMap(groups) {
         center: {lat: 0, lng: 0}
     });
     groups = groups || [];
+    markers = [];
     for (var i=0; i < groups.length; i++) {
         var g = groups[i];
         if (g.Lat != 0 && g.Lon != 0) {
-            new google.maps.Marker({
+            markers.push(new google.maps.Marker({
                 position: {lat: g.Lat, lng: g.Lon},
                 title: g.Name,
                 map: map
-            });
+            }));
         }
     }
+    new MarkerClusterer(map, markers, {imagePath: '/m'});
 }
